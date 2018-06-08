@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+        <!--CSS reset-->
+        <link rel="stylesheet" type="text/css" href="TriviaGameBasic/assets/css/reset.css">
+        <!--bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <!--Custom CSS-->
+        <link rel="stylesheet" type="text/css" href="TriviaGameBasic/assets/css/style.css"> 
+  
+</head>
+<body>
+
+<div class = "container">
+    <div class = "jumbotron">
+        <div>Problimatic Programming Problems </div>
+
+        <div id="display">Time Remaining: <span>00</span> seconds</div>
+        
+        <div class="quiz-container">
+            <div id="quiz"></div>
+        </div>
+            <button id="start">Start</button>
+            <button id="previous">Previous Question</button>
+            <button id="next">Next Question</button>
+            <button id="submit">Submit Quiz</button>
+    </div>
+</div>
+
+    
+
+
+
+</body>
+
+<style>
+    .slide{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s;
+    }
+    .active-slide{
+    opacity: 1;
+    z-index: 2;
+    }
+    .quiz-container{
+    position: relative;
+    height: 200px;
+    margin-top: 40px;
+    }
+
+</style>
+
+<script>
+
+(function() {
+  const myQuestions = [
+    {
+      question: "Question 1?",
+      answers: {
+        a: "A",
+        b: "B",
+        c: "C"
+      },
+      correctAnswer: "c"
+    },
+    {
+    question: "Question 2?",
+      answers: {
+        a: "A",
+        b: "B",
+        c: "C"
+      },
+      correctAnswer: "c"
+    },
+    {
+    question: "Question 3?",
+      answers: {
+        a: "A",
+        b: "B",
+        c: "C"
+      },
+      correctAnswer: "d"
+    },
+    {
+    question: "Question 4?",
+      answers: {
+        a: "A",
+        b: "B",
+        c: "C"
+      },
+      correctAnswer: "d"
+    },
+    {
+    question: "Question 5?",
+      answers: {
+        a: "A",
+        b: "B",
+        c: "C"
+      },
+      correctAnswer: "d"
+    },
+  ];
+
+  function buildQuiz() {
+    // Store the HTML output
+    const output = [];
+
+    // for each question...
+    myQuestions.forEach((currentQuestion, questionNumber) => {
+      //list of answer choices
+      const answers = [];
+
+      // for each answer...
+      for (letter in currentQuestion.answers) {
+        // HTML radio button
+        answers.push(
+          `<label>
+             <input type="radio" name="question${questionNumber}" value="${letter}">
+              ${letter} :
+              ${currentQuestion.answers[letter]}
+           </label>`
+        );
+      }
+
+      // add question and answers 
+      output.push(
+        `<div class="slide">
+           <div class="question"> ${currentQuestion.question} </div>
+           <div class="answers"> ${answers.join("")} </div>
+         </div>`
+      );
+    });
+
+    //combine output list into one string of HTML 
+    quizContainer.innerHTML = output.join("");
+  }
+
+  function showResults() {
+
+    // gather answers
+    const answerContainers = quizContainer.querySelectorAll(".answers");
+
+    // keep track of user's answers
+    let numCorrect = 0;
+
+    // for each question...
+    myQuestions.forEach((currentQuestion, questionNumber) => {
+      // find selected answer
+      const answerContainer = answerContainers[questionNumber];
+      const selector = `input[name=question${questionNumber}]:checked`;
+      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+      // if answer is correct
+      if (userAnswer === currentQuestion.correctAnswer) {
+        // add to the number of correct answers
+        numCorrect++;
+
+        // color the answers green
+        //answerContainers[questionNumber].style.color = "lightgreen";
+      } else {
+        // if answer is wrong or blank
+        // color the answers red
+        //answerContainers[questionNumber].style.color = "red";
+      }
+    });
+
+    // show number of correct answers out of total
+   resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+  }
+
+    function showSlide(n) {
+        // remove the active slide 
+        slides[currentSlide].classList.remove("active-slide");
+
+        //add the new slide n to the active slide
+        slides[n].classList.add("active-slide");
+
+        currentSlide = n;
+    
+        //define button functionality
+        if (startSlide === true) {
+
+            if (currentSlide === 0 ) {
+            //previous button nothing 
+            previousButton.style.display = "none";
+            }
+            else {
+            previousButton.style.display = "inline-block";
+            }
+
+            //define button last slide
+            if (currentSlide === slides.length - 1) {
+            nextButton.style.display = "none";
+            submitButton.style.display = "inline-block";
+            } else {
+            nextButton.style.display = "inline-block";
+            submitButton.style.display = "none";
+            }
+        } 
+        else{
+            //previous button nothing 
+            previousButton.style.display = "none";
+            nextButton.style.display = "none";
+        }
+    }
+
+    function showNextSlide() {
+        //adds one to current slide and updates slideshow.
+        showSlide(currentSlide + 1);
+    }
+
+    function showPreviousSlide() {
+        //removes one from current slide 
+        showSlide(currentSlide - 1);
+    }
+
+    function startGame(){
+        startSlide = true
+    }
+
+    //update quiz html 
+    const quizContainer = document.getElementById("quiz");
+    const resultsContainer = document.getElementById("quiz");
+    const submitButton = document.getElementById("submit");
+
+
+    // display quiz
+    var startSlide = true;
+    // look for button Start
+    const startButton = document.getElementById("start");
+    //startButton.addEventListener("click", buildQuiz, showSlide(0));
+
+    startButton.addEventListener("click", startGame)
+    buildQuiz();
+
+    //button html 
+    const previousButton = document.getElementById("previous");
+    const nextButton = document.getElementById("next");
+    const slides = document.querySelectorAll(".slide");
+    let currentSlide = 0;
+
+    showSlide(0);
+
+    // on submit, show results
+    submitButton.addEventListener("click", showResults);
+    previousButton.addEventListener("click", showPreviousSlide);
+    nextButton.addEventListener("click", showNextSlide);
+
+})();
+</script>
+
+
+<!--Bootstrap Javascript-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<!--Custom Javascript-->
+<script type="text/javascript" src="TriviaGameBasic/assets/javascript/app.js"></script>
+<!--JQuery CDN 3.3.1-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+      <!-- Added link to the jQuery Library -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</html>
