@@ -13,19 +13,91 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css"> 
 
 </head>
+
 <body>
 
+<div id='wrap'>
 
-    
+    <!-- Title Header -->
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-sm-12 col-md-1 col-lg-1 "></div>
+
+            <div class="col-sm-12 col-md-10 col-lg-10 ">
+            <div class="panel panel-default triviaBox">
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12  text-center" id="header">
+                        <h1> Programming Problems</h1>
+                    </div>
+
+                    <hr>
+                    <!-- Row of the timer -->
+                    <!-- to house the question count -->
+                    <div class="col-sm-12 col-md-4 col-lg-4 " id="questionCounter"></div>
+                    
+
+                    <!-- For the timer -->
+                    <div class="col-sm-12 col-md-4 col-lg-4 text-center">
+                        <div id="timer" class="text-center">
+                            <!-- dynamically update the timer here -->
+
+                            <!-- id for the start button -->
+                            <div id="start"> </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-4 col-lg-4 "></div> <!-- end timer row -->
+
+                    <!-- for the quesitons -->
+                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                        <div id="question"></div>
+                    </div>
+
+                    <!-- for the answers -->
+                    <div class="col-sm-12 col-md-12 col-lg-12 center-block">
+                        <div id="answers"></div>
+
+                        <br>
+
+                    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+
+                    <!-- Correct answer dynamically updated if time up or guessed incorrect -->
+                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                        <div id="correctAnswer"></div>
+
+                    </div>
+
+                    <div class="col-sm-12 col-md-12 col-lg-12 center-block text-center">
+                        <div id="fact"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="push"> </div>
+
+    </div>
+
+    <div id="footer"></div>
+        
 </body>
 
-<!--Bootstrap Javascript-->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-<!--Custom Javascript-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- link to user JS file. Name will change -->
 <script type="text/javascript" src="assets/javascript/app.js"></script>
-<!--JQuery CDN 3.3.1-->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 </html>
