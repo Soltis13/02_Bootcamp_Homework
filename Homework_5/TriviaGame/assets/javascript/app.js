@@ -80,7 +80,15 @@ triviaObj = {
                 b.html('NEXT')
             
                 $('#next').append(b);
-            }
+            },
+
+            submit: function() {
+                b = $('<button>'),
+                b.addClass('waves-effect waves-light btn-lg text-center startButton')
+                b.html('SUBMIT')
+            
+                $('#next').append(b);
+            },
         },
 
         //timer
@@ -160,9 +168,22 @@ triviaObj = {
             console.log(triviaObj.currentQuestion.answers.length)
             console.log(triviaObj.currentQuestion.answers)
             // set answer equal to answer
-            triviaObj.currentAnswer =  triviaObj.currentQuestion[1]
+            triviaObj.currentAnswer = triviaObj.currentQuestion.answers
             console.log(triviaObj.currentAnswer)
             // push infomration to html
+            $('#question').html
+
+            var divAnswers;
+            for(var j=0; j < triviaObj.currentQuestion.answers.length; j++ ){
+                divAnswers=$("<div>")
+                
+                divAnswers.append(triviaObj.currentQuestion.answers[j])
+
+                console.log(divAnswers)
+                
+            }
+
+         
         },
 
 
@@ -195,6 +216,7 @@ triviaObj = {
 
     
 };
+
 //Game Logic //triviaObj.
 
     //document ready
@@ -205,58 +227,37 @@ triviaObj = {
 
         
         $("#start").on('click', function(event){
-            $(this).hide();
-            triviaObj.stopwatch.reset()
- 
-        console.log(triviaObj.clockRunning)
-        console.log(triviaObj.openQuestion)
-
-        //for i in array ,numnber of questions in array
-        if(triviaObj.openQuestion === true){
-            console.log(triviaObj.clockRunning)
-
-        
+            $(this).hide();         
+      
             //load next button
-            triviaObj.pageLoad.next()
-
-            
-
-
-            triviaObj.stopwatch.start()
-            console.log(triviaObj.currentTime)
-     
-            
-
-            
-
+            triviaObj.pageLoad.next();
+                    
             // clear div of content
             triviaObj.emptyDivs();
 
             //load question
             triviaObj.questionLoad(triviaObj.questionCounter);
-           
-
-
-            if(triviaObj.currentTime > 0) {
+          
+            // if(triviaObj.currentTime > 0) {
                 //call start timer
     
                 //watch for on click of next
-                $("#next").on('click', function(event){
-                    triviaObj.stopwatch.stop()
+            $("#next").on('click', function(event){
+                //triviaObj.stopwatch.stop()
 
-                    triviaObj.questionCounter++;
+                triviaObj.questionCounter++;
+                triviaObj.emptyDivs();
 
-                    if(triviaObj.userGuess === triviaObj.currentAnswer){
-                        triviaObj.correctAnswer++;
-                    }
-                    else if(triviaObj.userGuess !== triviaObj.currentAnswer){
-                        triviaObj.incorrectGuesses++;
-                    }
-                    
-                })
+                if(triviaObj.userGuess === triviaObj.currentAnswer){
+                    triviaObj.correctAnswer++;
+                }
+                else if(triviaObj.userGuess !== triviaObj.currentAnswer){
+                    triviaObj.incorrectGuesses++;
+                }
+            });
 
                 
-                console.log("Times up")
+                
                 //stop timer
                 //triviaObj.stopwatch.stop()
 
@@ -265,22 +266,8 @@ triviaObj = {
                 //add to question unanswered
                 //triviaObj.unAnsweredGuesses++
 
-                //load next question
-            }  
-
-
-            
-            
-
-            
-
-
-      
-        }
-        })
-
-
-
+               //load next question
         
+        })      
         //load end page and print out 
-    });
+    })

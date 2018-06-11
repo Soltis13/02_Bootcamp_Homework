@@ -15,12 +15,90 @@
 </head>
 <body>
 
-    <div class = "container">
+    <div class = "container" id = "pageone">
         <div class = "jumbotron">
             <div class = "title">Pointless Programming Problems</div>
 
-            <!--Have a start button which watches for the user to click the button-->
+            <!-Have a start button which watches for the user to click the button->
             <button type="button" class="btn" id="startButton"><a href="questions.html">START</a></button>
+
+        </div>
+    </div>
+
+    <div class = "container" id = "pagetwo">
+        <div class = "jumbotron">
+            <div class = "title">Pointless Programming Problems</div>
+
+            <!--Begin countdown clock for user to answer questions-->
+            <div><h3>Time Remaining: <span id="display">00</span> Seconds</h3>
+
+            <!--Have 5 questions with multiple choice answers-->
+            <div id="quiz">
+                <div>
+                    <p>Question 1<br>
+                    <form>
+                        <input type="radio" name="gender" value="male" checked> male
+                        <input type="radio" name="gender" value="female"> Female
+                        <input type="radio" name="gender" value="other"> Other
+                        <input type="radio" name="gender" value="other"> Other
+                    </form>
+                    </p>
+                </div>
+  
+                <div>
+                    <p>Question 2<br>
+                        <form>
+                            <input type="radio" name="gender" value="male" checked> male
+                            <input type="radio" name="gender" value="female"> Female
+                            <input type="radio" name="gender" value="other"> Other
+                            <input type="radio" name="gender" value="other"> Other
+                        </form>
+                    </p>
+                </div>
+                <div>
+                        <p>Question 3<br>
+                            <form>
+                                <input type="radio" name="gender" value="male" checked> male
+                                <input type="radio" name="gender" value="female"> Female
+                                <input type="radio" name="gender" value="other"> Other
+                                <input type="radio" name="gender" value="other"> Other
+                            </form>
+                        </p>
+                    </div>
+                    <div>
+                            <p>Question 4<br>
+                                <form>
+                                    <input type="radio" name="gender" value="male" checked> male
+                                    <input type="radio" name="gender" value="female"> Female
+                                    <input type="radio" name="gender" value="other"> Other
+                                    <input type="radio" name="gender" value="other"> Other
+                                </form>
+                            </p>
+                        </div>
+                        <div>
+                                <p>Question 5<br>
+                                    <form>
+                                        <input type="radio" name="gender" value="male" checked> male
+                                        <input type="radio" name="gender" value="female"> Female
+                                        <input type="radio" name="gender" value="other"> Other
+                                        <input type="radio" name="gender" value="other"> Other
+                                    </form>
+                                </p>
+                            </div>
+
+
+            </div>
+            <!-- Button to submit answers,-->
+            <button id="submit">Submit Quiz</button>
+
+            
+
+        </div>
+    </div>
+    
+    <div class = "container" id = "pagethree">
+        <div class = "jumbotron">
+            <div class = "title">Pointless Programming Problems</div>
 
         </div>
     </div>

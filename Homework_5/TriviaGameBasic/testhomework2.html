@@ -24,7 +24,6 @@
       <div class="quiz-container">
         <div id="quiz"></div>
       </div>
-      
         <button id="previous">Previous Question</button>
         <button id="next">Next Question</button>
         <button id="submit">Submit Quiz</button>
@@ -186,7 +185,7 @@
 
     currentSlide = n;
 
-    //define button functionality - start slide show
+    //define button functionality
     if (startSlide === true) {
 
         if (currentSlide === 0 ) {
@@ -286,7 +285,6 @@
     startSlide = true
   }
 
-
   //update quiz html 
     var quizContainer = document.getElementById("quiz");
     var resultsContainer = document.getElementById("quiz");
@@ -298,7 +296,6 @@
     buildQuiz();
 
   //button html 
-  var startButton = document.getElementById("start");
     var previousButton = document.getElementById("previous");
     var nextButton = document.getElementById("next");
     var slides = document.querySelectorAll(".slide");

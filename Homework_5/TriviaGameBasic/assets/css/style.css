@@ -2,6 +2,25 @@ body{
     background-color: lightblue;
 }
 
+.container{
+    width: 60%;
+    position: fixed;
+    top: 10em;
+    left: 20%;
+}
+
+#pageone{
+    z-index: 0;
+}
+
+#pagetwo{
+    z-index: 2;
+}
+
+#pagethree{
+    z-index: 1;
+}
+
 .jumbotron{
     text-align: center;
     min-height: 30em;
