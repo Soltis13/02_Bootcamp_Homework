@@ -25,7 +25,7 @@ function displayAnimalInfo() {
 
   for(var i = 0; i < results.length; i++){
 
-    var gifDiv = $("<div class='item col-md-3'>");
+    var gifDiv = $("<div class='item col-md-3' >");
 
     var rating = results[i].rating;
 
@@ -58,7 +58,7 @@ function renderButtons() {
     //generate button for each animal in array
     var a = $("<button>");
     //adding class for animal-btn
-    a.addClass("btn btn-primary animal-btn");
+    a.addClass("animal-btn btn btn-primary ");
     //adding a data-attribute
     a.attr("data-name", animals[i]);
     //providing an initial button text

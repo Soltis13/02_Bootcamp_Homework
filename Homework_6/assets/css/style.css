@@ -7,6 +7,9 @@ body{
 
 .item{
     margin: 1em;
+    height: auto;
+    width: 200px;
+    overflow: hidden;
    
 }
 
@@ -32,7 +35,7 @@ body{
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 10px 2px;
+    margin: 2em;
     cursor: pointer;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
@@ -46,7 +49,4 @@ body{
 
 #buttons-view{
     margin: 1em;
-}
-.animal-btn{
-    margin: 0 .25em;
 }
