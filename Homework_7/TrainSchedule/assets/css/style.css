@@ -1,0 +1,28 @@
+/* */
+body{
+    background-color: lightgrey;
+}
+
+/* Heading*/
+.heading{
+    text-align: center;
+}
+
+/* Table */
+
+th{
+    padding: 0 4em 0 0;
+}
+.title{
+    background-color: lightskyblue;
+}
+
+.jumbotron{
+    background-color: white;
+    
+}
+
+#mainsection{
+    border: 3px solid lightskyblue;
+}
+/* Form */
