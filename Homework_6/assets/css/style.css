@@ -26,6 +26,7 @@ body{
     margin: 0;
 }
 
+
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -46,6 +47,10 @@ body{
 }
 
 /* Animal button area*/
+
+button {
+ margin: .5em;
+}
 
 #buttons-view{
     margin: 1em;
