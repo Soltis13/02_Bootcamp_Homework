@@ -32,7 +32,7 @@
         <div class = 'jumbotron' id='mainsection'>
             
             <div class = 'maintext'>
-                <table>
+                <table id='table'>
                     <thead>
                         <tr>
                             <th>Train Name</th>
@@ -43,7 +43,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <span id='table'></span>
+              
                     </tbody>
                 </table>
             </div>
@@ -56,16 +56,16 @@
             <div class = 'maintext'>
                 <form action="/action_page.php">
                 Train Name:<br>
-                <input type="text" name="firstname" value="Hogwarts Express">
+                <input type="text" name="firstname" Id = "TrainName" value="Hogwarts Express">
                 <br>
                 Destination:<br>
-                <input type="text" name="lastname" value="Platform 9 and 3/4">
+                <input type="text" name="lastname" Id="Destination" value="Platform 9 and 3/4">
                 <br>
                 First Train Time (HH:mm - military time):<br>
-                <input type="text" name="lastname" value="0900">
+                <input type="text" name="lastname" Id = "FirstTime" value="0900">
                 <br>
                 Frequency (min):<br>
-                <input type="text" name="lastname" value="262800">
+                <input type="text" name="lastname" ID = "Frequency" value="262800">
                 <br><br>
                 <input type="submit" value="Submit">
                 </form> 
@@ -84,8 +84,9 @@
 
 </script>
 
-<!--Custom Javascript-->
-<script type="text/javascript" src="assets/javascript/game.js"></script>
+<!--Moment.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+
 
 <!--jQuery 3.3.1  https://developers.google.com/speed/libraries/#jquery  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -98,6 +99,9 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<!--Custom Javascript-->
+<script type="text/javascript" src="assets/javascript/game.js"></script>
 
 
 

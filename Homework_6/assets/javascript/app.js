@@ -34,18 +34,13 @@ function displayAnimalInfo() {
 
       var p = $("<p>").text("Rating: " + rating);
 
-      imageDiv = $("<img>");
+     
       animalImage = $("<img>");
-      animalImageStill = $("<img>");
+
       animalImage.attr("src", results[i].images.fixed_height.url);
-      animalImageStill.attr("src", results[i].images.fixed_height_still.url);
+
         //console.log(data.data[i]);
 
-        
-        imageDiv.addClass("_Giphy");
-        imageDiv.attr("data-state", "still");
-        imageDiv.attr("data-still", animalImageStill);
-        imageDiv.attr("data-animate", animalImage);
       
       gifDiv.append(p);
       gifDiv.append(animalImage);
@@ -94,23 +89,32 @@ $("#add-animal").on("click", function(event) {
 });
 
 //function to click and still images
-function pausePlayGifs() {
-  var state = $(this).attr("data-state");
-  console.log(state)
-  console.log(this)
-  if (state === "still") {
-    $(this).attr("src", $(this).attr("data-animate"));
-    $(this).attr("data-state", "animate");
 
-  } else {
-    $(this).attr("src", $(this).attr("data-still"));
-    $(this).attr("data-state", "still");
+  $(document).on("click", ".item",
+    // function()
+    // {
+    //   var src = $(this).attr("src");
+    //   console.log(src)
+    //   $(this).attr("src", src.replace(/\.png$/i, ".gif"));
+    // },
+    
+    function()
+    {
+      console.log(this);
 
-  };
-};
+      var imageSrc = this.img;
+
+      console.log(imageSrc);
+
+      $(this).attr("src", imageSrc.replace(/\.gif$/i, ".png"));
+      console.log(this);
+    },
+  )
+
+
 
 //Click event on gifs with class of "_Giphy" executes pausePlayGifs function
-$(document).on("click", "._Giphy", pausePlayGifs);
+
 
 //onclick event for all animal-btn elements
 $(document).on("click", ".animal-btn", displayAnimalInfo);
