@@ -26,7 +26,7 @@ var objdata = {
 
   // Capture Button Click
   $("#submit").on("click", function(event) {
-    // console.log("You clicked the button")
+    console.log("You clicked the button")
      // Don't refresh the page!
      event.preventDefault();
  
@@ -54,19 +54,26 @@ database.ref().on("child_added", function(childsnapshot){
   console.log(childsnapshot.val().FirstTime)
   console.log(childsnapshot.val().Frequency)
 
-  //minutes away ((current time - first time ) / frequency)
-  //NextArrival currenttime + ((current time - first time ) / frequency)
+  //minutes away = ((current time - first time ) % frequency)
+  //NextArrival currenttime + ((current time - first time ) % frequency)
   
-  moment().local()
-  var NextArrival
+  var CurrentTime = moment().format('LLLL');
+  var HourFirstTime = FirstTime.slice(1,2)
+  console.log(moment(CurrentTime).subtract())
+  console.log(CurrentTime)
+  console.log(FirstTime)
+ 
+  // var away = CurrentTime.moment().subtract()
+
+      
   var MinutesAway
+  var NextArrival
 
 
 
-  $("#table > tbody").append("<tr> <td>" + childsnapshot.val().Name + "</td>" 
-                      + "<td>" + childsnapshot.val().Role + "</td>" 
-                      + "<td>" + StartD + "</td>" 
-                      + "<td>" + monthsWorked + "</td>" 
-                      + "<td>" + childsnapshot.val().MonthlyRate + "</td>"
-                      + "<td>$" + TotalBilled+  "</td> </tr>")
-
+  $("#table > tbody").append("<tr> <td>" + childsnapshot.val().TrainName + "</td>" 
+                      + "<td>" + childsnapshot.val().Destination + "</td>" 
+                      + "<td>" + childsnapshot.val().Frequency + "</td>" 
+                      + "<td>" + NextArrival + "</td>" 
+                      + "<td>" + MinutesAway +  "</td> </tr>")
+});

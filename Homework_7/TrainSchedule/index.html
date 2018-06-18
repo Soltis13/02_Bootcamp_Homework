@@ -15,6 +15,9 @@
     <!--Custom CSS-->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css"> 
 
+   <!--Firebase web App scrypt (gmail13)-->
+   <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
  
 
 </head>
@@ -54,7 +57,7 @@
         <div class = 'jumbotron' id='mainsection'>
             
             <div class = 'maintext addtrain'>
-                <form action="/action_page.php">
+                <form>
                 Train Name:<br>
                 <input type="text" name="firstname" Id = "TrainName" value="Hogwarts Express">
                 <br>
@@ -67,7 +70,7 @@
                 Frequency (min):<br>
                 <input type="text" name="lastname" ID = "Frequency" value="262800">
                 <br><br>
-                <input type="submit" value="Submit">
+                <input type="submit" value="submit" Id='submit'>
                 </form> 
             </div>
         </div>
@@ -78,11 +81,7 @@
     
 </body>
 
-<!--Firebase web App scrypt (gmail13)-->
-<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-<script>
 
-</script>
 
 <!--Moment.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
@@ -90,10 +89,6 @@
 
 <!--jQuery 3.3.1  https://developers.google.com/speed/libraries/#jquery  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!--jQuery Mobile  http://jquerymobile.com/  -->
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
 
 <!--Bootstrap JS-->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
