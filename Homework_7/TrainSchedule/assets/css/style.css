@@ -1,28 +1,54 @@
 /* */
 body{
     background-color: lightgrey;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Heading*/
 .heading{
     text-align: center;
+    background-color
 }
+
+thead {
+    border-bottom: 1px solid #000000;
+    background-color: #d3d3d3
+  }
+
 
 /* Table */
 
 th{
-    padding: 0 4em 0 0;
+    padding: 0 7em 0 0;
 }
+
+tr {
+    border-top: 1px solid #000000;
+  }
+
 .title{
     background-color: lightskyblue;
+ 
+    padding: .75em .5em .5em .5em;
+    color: white;
 }
 
 .jumbotron{
     background-color: white;
+    text-align: center;
     
 }
 
 #mainsection{
     border: 3px solid lightskyblue;
+    
 }
 /* Form */
+
+input{
+  
+    margin: 0 0 1em 0;
+}
+#addtrain{
+    background-image: url("../images/train1.jpg")
+}

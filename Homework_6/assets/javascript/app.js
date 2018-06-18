@@ -90,26 +90,28 @@ $("#add-animal").on("click", function(event) {
 
 //function to click and still images
 
-  $(document).on("click", ".item",
-    // function()
-    // {
-    //   var src = $(this).attr("src");
-    //   console.log(src)
-    //   $(this).attr("src", src.replace(/\.png$/i, ".gif"));
-    // },
+  // $(document).on("click", ".item",
+  //   // function()
+  //   // {
+  //   //   var src = $(this).attr("src");
+  //   //   console.log(src)
+  //   //   $(this).attr("src", src.replace(/\.png$/i, ".gif"));
+  //   // },
     
-    function()
-    {
-      console.log(this);
+  //   function()
+  //   {
+  //     console.log(this);
 
-      var imageSrc = this.img;
+  //     var currentImage = this;
 
-      console.log(imageSrc);
+  //     var imageSrc = $(this).children('img').attr('src')
 
-      $(this).attr("src", imageSrc.replace(/\.gif$/i, ".png"));
-      console.log(this);
-    },
-  )
+  //     console.log(imageSrc);
+
+  //     $(this).children('img').attr("src", imageSrc.replace(/\.gif$/i, ".png"));
+  //     console.log(this);
+  //   },
+  // )
 
 
 
