@@ -49,10 +49,10 @@ var objdata = {
 database.ref().on("child_added", function(childsnapshot){       
     a++;
   console.log(a)
-  console.log(childsnapshot.val().TrainName);
-  console.log(childsnapshot.val().Destination)
-  console.log(childsnapshot.val().FirstTime)
-  console.log(childsnapshot.val().Frequency)
+  //console.log(childsnapshot.val().TrainName);
+  //console.log(childsnapshot.val().Destination)
+  //console.log(childsnapshot.val().FirstTime)
+  //console.log(childsnapshot.val().Frequency)
 
   //minutes away = ((current time - first time ) % frequency)
   //NextArrival currenttime + ((current time - first time ) % frequency)
@@ -67,6 +67,38 @@ database.ref().on("child_added", function(childsnapshot){
 
  
   // var away = CurrentTime.moment().subtract()
+  var CurrentTime = moment().unix();
+  console.log(CurrentTime)
+  
+
+
+  console.log("New line")
+  console.log("First Time" + childsnapshot.val().FirstTime)
+  var HourFirstTime =  childsnapshot.val().FirstTime.slice(0,2) * 60 * 60
+  var MinFirstTime =  childsnapshot.val().FirstTime.slice(-2) * 60
+  var SecFrequency = childsnapshot.val().Frequency * 60
+  console.log("HourFirstTime" + HourFirstTime)
+  console.log("MinFirstTime" + MinFirstTime)
+
+  var EstArrival = (CurrentTime - HourFirstTime - MinFirstTime ) % SecFrequency;
+
+  console.log(EstArrival / 60)
+
+
+
+  // var CurrentTime = moment().format('LT');
+  // console.log("currentTIme" + CurrentTime)
+
+  // var NextArrival = (moment().subtract(HourFirstTime, 'hour').subtract(MinFirstTime, 'minute'));
+  // //NextArrival = moment().add(MinFirstTime, 'minute');
+  // NextArrival = NextArrival.format('LT');
+  // console.log(NextArrival)
+  // // var HourCurrentTime =  CurrentTime.slice(0,2)
+  // // var MinCurrentTime =  CurrentTime.slice(-2)
+  // // console.log("HourCurrentTime" + HourCurrentTime)
+  // // console.log("MinCurrentTime" + MinCurrentTime)
+
+  // // var away = CurrentTime.moment().subtract()
 
       
   var MinutesAway
