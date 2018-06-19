@@ -58,10 +58,13 @@ database.ref().on("child_added", function(childsnapshot){
   //NextArrival currenttime + ((current time - first time ) % frequency)
   
   var CurrentTime = moment().format('LLLL');
-  var HourFirstTime = FirstTime.slice(1,2)
-  console.log(moment(CurrentTime).subtract())
-  console.log(CurrentTime)
-  console.log(FirstTime)
+  var HourFirstTime = childsnapshot.val().FirstTime
+  var Hour = HourFirstTime.slice(1,3);
+  var MinFirstTime = childshapshot.val().FirstTime
+  var minutes = MinFirstTime.slice(-2);
+  console.log(Hour)
+  console.log(Minutes)
+
  
   // var away = CurrentTime.moment().subtract()
 
