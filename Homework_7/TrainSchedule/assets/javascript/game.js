@@ -54,35 +54,89 @@ database.ref().on("child_added", function(childsnapshot){
   //console.log(childsnapshot.val().FirstTime)
   //console.log(childsnapshot.val().Frequency)
 
-  //minutes away = ((current time - first time ) % frequency)
+  //minutes away = (abs(current time - first time ) % frequency)
   //NextArrival currenttime + ((current time - first time ) % frequency)
   
-  var CurrentTime = moment().format('LLLL');
-  var HourFirstTime = childsnapshot.val().FirstTime
-  var Hour = HourFirstTime.slice(1,3);
-  var MinFirstTime = childshapshot.val().FirstTime
-  var minutes = MinFirstTime.slice(-2);
-  console.log(Hour)
-  console.log(Minutes)
+
+   var HourFirstTime = childsnapshot.val().FirstTime
+   var Hour = HourFirstTime.slice(0,2);
+   //console.log(Hour)
+   var MinFirstTime = childsnapshot.val().FirstTime
+   var minutes = MinFirstTime.slice(-2);
+   //console.log(minutes)
+   var totalStartTime = +Hour * 60 + +minutes
+   //console.log(totalStartTime)
+
+  var Time = new Date()
+  // var Arrival = childsnapshot.val().FirstTime
+
+  var HourTime = Time.getHours() 
+  //console.log(HourTime)
+  var MinuteTime = Time.getMinutes()
+  //console.log(MinuteTime)
+  var totalCurrentTime = HourTime * 60 + MinuteTime + ( 24 * 60 )
+
+  //console.log(totalCurrentTime)
+
+  var freq = childsnapshot.val().Frequency
+
+  var MinutesAway = 0 
+  var Arrival  = 0
+
+  for (var i = totalStartTime ; i < totalCurrentTime; i = i + +freq ){
+    console.log(i)
+    console.log(totalCurrentTime)
+    console.log(+freq)
+
+      
+    
+    Arrival = i + +freq
+    MinutesAway = Arrival - totalCurrentTime
+
+  }
+
+  var NextArrivalHours =(Math.abs(Math.round(Arrival / 60) - 25)%24)
+  var nah = NextArrivalHours.toString()
+  var NextArrivalMinutes =(Arrival % 60)
+  var nam = NextArrivalMinutes.toString()
+  var NextArrival = nah + ":" + nam
+console.log(MinutesAway)
+console.log(NextArrival)
+
+
+  // var MinutesAway = Math.abs( (HourTime + MinuteTime) - Arrival)
+  // console.log(MinutesAway)
+
+
+
+
+
+  // var CurrentTime = moment().format('LLLL');
+  // var HourFirstTime = childsnapshot.val().FirstTime
+  // var Hour = HourFirstTime.slice(1,3);
+  // var MinFirstTime = childshapshot.val().FirstTime
+  // var minutes = MinFirstTime.slice(-2);
+  // console.log(Hour)
+  // console.log(Minutes)
 
  
-  // var away = CurrentTime.moment().subtract()
-  var CurrentTime = moment().unix();
-  console.log(CurrentTime)
+  // // var away = CurrentTime.moment().subtract()
+  // var CurrentTime = moment().unix();
+  // console.log(CurrentTime)
   
 
 
-  console.log("New line")
-  console.log("First Time" + childsnapshot.val().FirstTime)
-  var HourFirstTime =  childsnapshot.val().FirstTime.slice(0,2) * 60 * 60
-  var MinFirstTime =  childsnapshot.val().FirstTime.slice(-2) * 60
-  var SecFrequency = childsnapshot.val().Frequency * 60
-  console.log("HourFirstTime" + HourFirstTime)
-  console.log("MinFirstTime" + MinFirstTime)
+  // console.log("New line")
+  // console.log("First Time" + childsnapshot.val().FirstTime)
+  // var HourFirstTime =  childsnapshot.val().FirstTime.slice(0,2) * 60 * 60
+  // var MinFirstTime =  childsnapshot.val().FirstTime.slice(-2) * 60
+  // var SecFrequency = childsnapshot.val().Frequency * 60
+  // console.log("HourFirstTime" + HourFirstTime)
+  // console.log("MinFirstTime" + MinFirstTime)
 
-  var EstArrival = (CurrentTime - HourFirstTime - MinFirstTime ) % SecFrequency;
+  // var EstArrival = (CurrentTime - HourFirstTime - MinFirstTime ) % SecFrequency;
 
-  console.log(EstArrival / 60)
+  // console.log(EstArrival / 60)
 
 
 
@@ -99,10 +153,6 @@ database.ref().on("child_added", function(childsnapshot){
   // // console.log("MinCurrentTime" + MinCurrentTime)
 
   // // var away = CurrentTime.moment().subtract()
-
-      
-  var MinutesAway
-  var NextArrival
 
 
 
