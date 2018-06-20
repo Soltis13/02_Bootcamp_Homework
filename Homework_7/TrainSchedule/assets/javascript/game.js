@@ -58,21 +58,22 @@ database.ref().on("child_added", function(childsnapshot){
   //NextArrival currenttime + ((current time - first time ) % frequency)
   
   var CurrentTime = moment().unix();
+  var midnight = moment([2018, 6, ])
   console.log(CurrentTime)
   
 
 
-  console.log("New line")
-  console.log("First Time" + childsnapshot.val().FirstTime)
-  var HourFirstTime =  childsnapshot.val().FirstTime.slice(0,2) * 60 * 60
-  var MinFirstTime =  childsnapshot.val().FirstTime.slice(-2) * 60
-  var SecFrequency = childsnapshot.val().Frequency * 60
-  console.log("HourFirstTime" + HourFirstTime)
-  console.log("MinFirstTime" + MinFirstTime)
+  // console.log("New line")
+  // console.log("First Time" + childsnapshot.val().FirstTime)
+  // var HourFirstTime =  childsnapshot.val().FirstTime.slice(0,2) * 60 * 60
+  // var MinFirstTime =  childsnapshot.val().FirstTime.slice(-2) * 60
+  // var SecFrequency = childsnapshot.val().Frequency * 60
+  // console.log("HourFirstTime" + HourFirstTime)
+  // console.log("MinFirstTime" + MinFirstTime)
 
-  var EstArrival = (CurrentTime - HourFirstTime - MinFirstTime ) % SecFrequency;
+  // var EstArrival = (CurrentTime - HourFirstTime - MinFirstTime ) % SecFrequency;
 
-  console.log(EstArrival / 60)
+  // console.log(EstArrival / 60)
 
 
 
