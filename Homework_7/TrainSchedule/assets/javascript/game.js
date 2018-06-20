@@ -57,6 +57,16 @@ database.ref().on("child_added", function(childsnapshot){
   //minutes away = ((current time - first time ) % frequency)
   //NextArrival currenttime + ((current time - first time ) % frequency)
   
+  var CurrentTime = moment().format('LLLL');
+  var HourFirstTime = childsnapshot.val().FirstTime
+  var Hour = HourFirstTime.slice(1,3);
+  var MinFirstTime = childshapshot.val().FirstTime
+  var minutes = MinFirstTime.slice(-2);
+  console.log(Hour)
+  console.log(Minutes)
+
+ 
+  // var away = CurrentTime.moment().subtract()
   var CurrentTime = moment().unix();
   var midnight = moment([2018, 6, ])
   console.log(CurrentTime)
