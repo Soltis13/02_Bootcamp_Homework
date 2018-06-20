@@ -71,22 +71,24 @@ database.ref().on("child_added", function(childsnapshot){
   // var Arrival = childsnapshot.val().FirstTime
 
   var HourTime = Time.getHours() 
-  //console.log(HourTime)
+  console.log("pre hour time" + HourTime)
   var MinuteTime = Time.getMinutes()
-  //console.log(MinuteTime)
+  console.log("pre min time" + MinuteTime)
   var totalCurrentTime = HourTime * 60 + MinuteTime + ( 24 * 60 )
 
-  //console.log(totalCurrentTime)
+  console.log("pre current time" + totalCurrentTime)
 
   var freq = childsnapshot.val().Frequency
+
+  console.log("pre freq" + freq)
 
   var MinutesAway = 0 
   var Arrival  = 0
 
   for (var i = totalStartTime ; i < totalCurrentTime; i = i + +freq ){
-    console.log(i)
-    console.log(totalCurrentTime)
-    console.log(+freq)
+    //console.log(i)
+    //console.log(totalCurrentTime)
+    //console.log(+freq)
 
       
     
@@ -94,12 +96,24 @@ database.ref().on("child_added", function(childsnapshot){
     MinutesAway = Arrival - totalCurrentTime
 
   }
+  var NextArrivalHours = 0
+  var nah = ''
+  var NextArrivalMinutes = 0
+  var nam = ''
+  var namnew = ''
+  var NextArrival = ''
 
-  var NextArrivalHours =(Math.abs(Math.round(Arrival / 60) - 25)%24)
+
+  console.log("arrival" + +Arrival)
+  var NextArrivalHours =(Math.floor((+Arrival - 1440) / 60)%24);
+  console.log("hours"  + NextArrivalHours)
   var nah = NextArrivalHours.toString()
-  var NextArrivalMinutes =(Arrival % 60)
-  var nam = NextArrivalMinutes.toString()
-  var NextArrival = nah + ":" + nam
+  var NextArrivalMinutes = (((+Arrival-1440) % 60) / 100) +0.001
+  var newNextArrivalMinutes = NextArrivalMinutes.toFixed(3);
+  console.log("min" + newNextArrivalMinutes)
+  var nam = newNextArrivalMinutes.toString()
+  var namnew = nam.slice(-3,-1)
+  var NextArrival = nah + ":" + namnew
 console.log(MinutesAway)
 console.log(NextArrival)
 
