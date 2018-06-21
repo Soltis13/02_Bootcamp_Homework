@@ -89,8 +89,6 @@ database.ref().on("child_added", function(childsnapshot){
     //console.log(i)
     //console.log(totalCurrentTime)
     //console.log(+freq)
-
-      
     
     Arrival = i + +freq
     MinutesAway = Arrival - totalCurrentTime
@@ -103,7 +101,6 @@ database.ref().on("child_added", function(childsnapshot){
   var namnew = ''
   var NextArrival = ''
 
-
   console.log("arrival" + +Arrival)
   var NextArrivalHours =(Math.floor((+Arrival - 1440) / 60)%24);
   console.log("hours"  + NextArrivalHours)
@@ -114,60 +111,8 @@ database.ref().on("child_added", function(childsnapshot){
   var nam = newNextArrivalMinutes.toString()
   var namnew = nam.slice(-3,-1)
   var NextArrival = nah + ":" + namnew
-console.log(MinutesAway)
-console.log(NextArrival)
-
-
-  // var MinutesAway = Math.abs( (HourTime + MinuteTime) - Arrival)
-  // console.log(MinutesAway)
-
-
-
-
-
-  // var CurrentTime = moment().format('LLLL');
-  // var HourFirstTime = childsnapshot.val().FirstTime
-  // var Hour = HourFirstTime.slice(1,3);
-  // var MinFirstTime = childshapshot.val().FirstTime
-  // var minutes = MinFirstTime.slice(-2);
-  // console.log(Hour)
-  // console.log(Minutes)
-
- 
-  // // var away = CurrentTime.moment().subtract()
-  // var CurrentTime = moment().unix();
-  // console.log(CurrentTime)
-  
-
-
-  // console.log("New line")
-  // console.log("First Time" + childsnapshot.val().FirstTime)
-  // var HourFirstTime =  childsnapshot.val().FirstTime.slice(0,2) * 60 * 60
-  // var MinFirstTime =  childsnapshot.val().FirstTime.slice(-2) * 60
-  // var SecFrequency = childsnapshot.val().Frequency * 60
-  // console.log("HourFirstTime" + HourFirstTime)
-  // console.log("MinFirstTime" + MinFirstTime)
-
-  // var EstArrival = (CurrentTime - HourFirstTime - MinFirstTime ) % SecFrequency;
-
-  // console.log(EstArrival / 60)
-
-
-
-  // var CurrentTime = moment().format('LT');
-  // console.log("currentTIme" + CurrentTime)
-
-  // var NextArrival = (moment().subtract(HourFirstTime, 'hour').subtract(MinFirstTime, 'minute'));
-  // //NextArrival = moment().add(MinFirstTime, 'minute');
-  // NextArrival = NextArrival.format('LT');
-  // console.log(NextArrival)
-  // // var HourCurrentTime =  CurrentTime.slice(0,2)
-  // // var MinCurrentTime =  CurrentTime.slice(-2)
-  // // console.log("HourCurrentTime" + HourCurrentTime)
-  // // console.log("MinCurrentTime" + MinCurrentTime)
-
-  // // var away = CurrentTime.moment().subtract()
-
+  console.log(MinutesAway)
+  console.log(NextArrival)
 
 
   $("#table > tbody").append("<tr> <td>" + childsnapshot.val().TrainName + "</td>" 
