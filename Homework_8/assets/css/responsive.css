@@ -1,5 +1,4 @@
 
-
 /* Screens Resolution : 992px
 -------------------------------------------------------------------------- */
 @media only screen and (max-width: 1200px) {
@@ -67,25 +66,6 @@
 	
 	.portfolio-section .p-item{ width: 50%; }
 	
-	
-	/* ---------------------------------
-	7. EDUCATION SECTION
-	--------------------------------- */
-
-	.education-wrapper{ position: relative; overflow: hidden; text-align: center; }
-
-	.education-wrapper:after{ content:''; position: absolute; top: 8px; bottom: 0; left: 50%;
-		margin-left: -1px; width: 2px; background: #ccc; }
-
-	.education-wrapper .education{ width: 100%; margin-top: 30px; }
-	
-	.education-wrapper .education.left,
-	.education-wrapper .education.right{ float: none; padding: 0px; text-align: center; }
-
-	.education-wrapper:after,
-	.education-wrapper .education:after{ display: none; }
-	
-}
 
 /* Screens Resolution : 575px
 -------------------------------------------------------------------------- */
