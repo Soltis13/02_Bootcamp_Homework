@@ -1,15 +1,41 @@
 require("dotenv").config();
+var Twitter = require('twitter')
+var Spotify = require('spotify');
+var omdb = require('omdb');
+var omdbrequest = require("request");
+var fs = require("fs");
 
 //add code to import access keys
+var action = process.argv[2];
+var value = process.argv[3];
+
+var client = require("./keys.js");
+
 
 //access the keys
-var spotify = new Spotify(keys.spotify);
-var client = new Twitter(keys.twitter);
+var clientSpotify = new Spotify(client.keys.spotify);
+var clientTwitter = new Twitter(client.keys.twitter);
+
 
 //liri should access there commants
 //* `my-tweets`
     //node liri.js my-tweets
     //This will show your last 20 tweets and when they were created at in your terminal/bash window.
+function myTweets(){
+    //TODO add user name
+    var params = {screen_name: '', limit: 20 };
+    clientTwitter.get('statuses/user_timeline', params, function(error, tweets, response) {
+        if (!error) {
+            console.log(tweets);
+            console.log(json(response))
+            //TODO check object response and formate output
+        }
+    });
+}
+
+if (action === "my-tweets"){
+    myTweets();
+}
 
 //* `spotify-this-song`
     //node liri.js spotify-this-song '<song name here>'
@@ -22,6 +48,19 @@ var client = new Twitter(keys.twitter);
 
     //If no song is provided then your program will default to "The Sign" by Ace of Base.
 
+function Song(){
+    clientSpotify.search({type: 'track', query: value}, function(err, data){
+        if(err){
+            console.log("error occurred: "+ err);
+            return;
+        }
+        console.log(JSON(data))
+        //TODO check object response and formate output
+    })
+}
+if (action === "spotify-this-song"){
+    Song()
+}
 //* `movie-this`
     //node liri.js movie-this '<movie name here>'
    // This will output the following information to your terminal/bash window:
@@ -34,6 +73,48 @@ var client = new Twitter(keys.twitter);
         // * Language of the movie.
         // * Plot of the movie.
         // * Actors in the movie.
+
+// if (action === "movie-this"){
+//     if (value === "NaN"){
+//         value = "Mr.Nobody"
+//     };
+
+//     omdb.search(value, function(err, movies) {
+//         if(err) {
+//             return console.log(err);
+//         }
+//         if(movies.length < 1){
+//             return console.log("No movies were found.");
+//         }
+//         movies.forEach(function(movie){
+//             console.log('%s (%d)', movie.title, movie.year);
+//         });
+//     });
+// }
+
+function omdbMovies(value){
+
+    omdbrequest("http://www.omdbapi.com/?t="+value+"&y=&plot=short&apikey=trilogy", function(error, response, body) {
+
+  // If the request is successful (i.e. if the response status code is 200)
+    if (!error && response.statusCode === 200) {
+
+        // Parse the body of the site and recover just the imdbRating
+        // (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it).
+        console.log(JSON.parse(body));
+        //TODO check object response and formate output
+    }
+    });
+}
+
+if(action === "movie-this"){
+     if (value === "NaN"){
+         value = "Mr.Nobody"
+     };
+
+    omdbMovies(value)
+
+}
    
 //* `do-what-it-says`
     //node liri.js do-what-it-says
@@ -42,3 +123,40 @@ var client = new Twitter(keys.twitter);
     //It should run spotify-this-song for "I Want it That Way," as follows the text in random.txt.
     //Feel free to change the text in that document to test out the feature for other commands.
 
+function doWhat(){
+    fs.readFile("random.txt", "uft8", function(err, data){
+        if (err) {
+            return console.log(err)
+        }
+    console.log(data)
+    //TODO check object response and formate output
+
+    if(data[0] ==="my-tweets" ){
+
+        myTweets();
+
+    }else if(data[0] === "spotify-this-song"){
+
+        Song();
+
+    }else if(data[0] === "movie-this"){
+        
+        if (value === "NaN"){
+            value = "Mr.Nobody"
+        };
+    
+        omdbMovies(value)
+
+    }else{console.log("no valid request")}
+
+    })
+}
+if(action === "do-what-it-says"){
+    doWhat()
+}
+
+
+function extra(){
+    
+
+}
