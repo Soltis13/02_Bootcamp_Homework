@@ -26,7 +26,7 @@
 //* `my-tweets`
 //node liri.js my-tweets
 //This will show your last 20 tweets and when they were created at in your terminal/bash window.
-function myTweets(){
+function myTweets(a){
     //TODO add user name
     var params = {screen_name: '', limit: 1 };
     clientTwitter.get('statuses/user_timeline', params, function(error, tweets, response) {
@@ -55,9 +55,9 @@ function myTweets(){
      //If no song is provided then your program will default to "The Sign" by Ace of Base.
      //"id":"5ELRkzdzz0HvGpMDlfZHkV"
 
- function Song(value, limit, val){
-     console.log(action+ " "+ value)
-     clientSpotify.search({type: 'track', query: value, limit: limit}, function(err, data){
+ function Song(a, limit, val){
+     console.log(action+ " "+ a)
+     clientSpotify.search({type: 'track', query: a, limit: limit}, function(err, data){
          if(err){
              console.log("error occurred: "+ err);
              return;
@@ -131,9 +131,9 @@ function myTweets(){
 // //     });
 // // }
 
-function omdbMovies(value){
+function omdbMovies(a){
 
-    omdbrequest("http://www.omdbapi.com/?t="+value+"&y=&plot=short&apikey=trilogy", function(error, response, body) {
+    omdbrequest("http://www.omdbapi.com/?t="+a+"&y=&plot=short&apikey=trilogy", function(error, response, body) {
 
     // If the request is successful (i.e. if the response status code is 200)
         if (!error && response.statusCode === 200) {
@@ -187,41 +187,48 @@ function doWhat(){
             console.log(action+" "+value)
             console.log("for loop dataArr: "+i+" "+dataArr[i])
             //is [0] equal to a command, 
-            if(dataArr[i]===("my-tweets" || "spotify-this-song" || "movie-this")){
+            if(dataArr[i]=="my-tweets" || dataArr[i]=="spotify-this-song" || dataArr[i]=="movie-this"){
                 action = dataArr[i];
                 console.log("found action: "+dataArr[i]+" Next value is: "+dataArr[i+1])
            
                 //if yes, //is next position equal to command?
-                if(dataArr[i+1]!==("my-tweets" || "spotify-this-song" || "movie-this")){
+                if(dataArr[i+1]!=="spotify-this-song" && dataArr[i+1] !== "my-tweets" && dataArr[i+1] !== "movie-this"){
                   //if no, make it equal to value and run command request
                   value = dataArr[i+1]
                   console.log("set value to next position value: "+ value)
                 }
              
             }else{action="noAction"}
-
+            console.log(action+" "+value)
+            
             //look for twitter
-            // if(action ==="my-tweets"){
-            //     myTweets();
+            if(action ==="my-tweets"){
+                 myTweets(value);
 
-            // }
-            // //look for spotify
-            // else if(action === "spotify-this-song"){
-            //     //set call search limit         
-            //     var limit = 1
-            //     var val = 0
-            //     Song(dataArr[1],limit,val);
+            }
+             //look for spotify
+             else if(action === "spotify-this-song"){
+  
+                 //set call search limit         
+                 var limit = 1
+                 var val = 0
+                 if(value === undefined){
+                    value = "The Sign";
+                    limit = 6;
+                    val = 5;
+                    //NoSong()
+                }
+                 Song(value,limit,val);
 
-            // }else if(action === "movie-this"){
-            //     if (value === undefined){
-            //         value = "Mr.Nobody"
-            //     };
-            //     omdbMovies(value)
+            }else if(action === "movie-this"){
+                 if (value === undefined){
+                     value = "Mr.Nobody"
+                 };
+                 omdbMovies(value)
 
-            // }else if{action === "noAction"
-            //      return 
-
-            //}else{console.log("Error: not a valid request")}
+            }else if(action === "noAction"){
+                 
+            }else{console.log("Error: not a valid request")}
 
         }
 
@@ -257,7 +264,7 @@ function doWhat(){
 
 //Twitter Function "myTweets" for liri "my-tweets" myTweets()
 if (action == "my-tweets"){ 
-    myTweets();
+    myTweets(value);
 }
 
 //Call Spotify function "function Song(value, limit, val)"
