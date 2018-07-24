@@ -1,19 +1,10 @@
 // * **Word.js**: Contains a constructor, Word that depends on the Letter constructor. This is used to create an object representing the current word the user is attempting to guess. That means the constructor should define:
 var Letter = require("./Letter");
 
-// var q = new Letter("q",false)
-// console.log(q)
-// console.log(q.LetterDisplay())
-// q.LetterCheck("q")
-// console.log(q.LetterGuessed)
-// console.log(q.LetterDisplay())
-// console.log(q)
-// console.log(q.LetterDisplay())
-// console.log(q.LetterDisplay())
-
+//new function constructor Word
 function Word(newWord,guesses){
 
-//   * An array of `new` Letter objects representing the letters of the underlying word
+    // An array of `new` Letter objects representing the letters of the underlying word
     this.newWord = newWord;
     //console.log(newWord)
     newWord=newWord.split("")
@@ -49,7 +40,7 @@ function Word(newWord,guesses){
         return letterArray
     }
 
-//   * A function that takes a character as an argument 
+    //   * A function that takes a character as an argument 
     this.GuessLetter = function(guess){
     //and calls the guess function on each letter object (the second function defined in `Letter.js`)
     
@@ -67,12 +58,4 @@ function Word(newWord,guesses){
         return false
     }
 }
-
-// var twist = new Word("twist")
-// console.log(twist.WordDisplay())
-// twist.GuessLetter("a")
-// twist.GuessLetter('t')
-// twist.WordDisplay()
-// console.log(twist.WordDisplay())
-
 module.exports = Word;
