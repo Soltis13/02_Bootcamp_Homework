@@ -43,17 +43,17 @@ function StartNewGame(){
     var WordToGuessArray=[];
     //Welcome the user
     console.log("\n\n")
-    console.log("-------------------------------------------------")
-    console.log("WELCOME TO THE WORD GUESSING GAME.               ")
-    console.log("-------------------------------------------------")
+    console.log("   -------------------------------------------------")
+    console.log("   WELCOME TO THE WORD GUESSING GAME.               ")
+    console.log("   -------------------------------------------------")
     console.log("\n")
-    console.log("-------------------------------------------------")
-    console.log("HELLO, I'M THE GAME'S KRAZY VIRTUAL NARRATOR.    ")
-    console.log("-------------------------------------------------")
+    console.log("   -------------------------------------------------")
+    console.log("   HELLO, I'M THE GAME'S KRAZY VIRTUAL NARRATOR.    ")
+    console.log("   -------------------------------------------------")
     console.log("\n")
-    console.log("-------------------------------------------------")
-    console.log("BUT YOU CAN CALL ME KVN. ")
-    console.log("-------------------------------------------------")
+    console.log("   -------------------------------------------------")
+    console.log("   BUT YOU CAN CALL ME KVN. ")
+    console.log("   -------------------------------------------------")
     console.log("\n")                        
     
     
@@ -61,7 +61,7 @@ function StartNewGame(){
     inquirer.prompt([
         {
             type: "input",
-            message: "WOULD YOU LIKE TO START A New Game Y/N",
+            message: "   WOULD YOU LIKE TO START A New Game Y/N",
             name: "NewGame",
             validate: function validateUserGuess(name){
                 if((name === "n"||name === "no")){
@@ -76,7 +76,7 @@ function StartNewGame(){
         {
             type: "list",
             name: 'theme',
-            message: '\n\n'+"-------------------------------------------------"+'\nBIG FIRST QUESTION . . .'+"\n-------------------------------------------------"+"\n\n\n"+"-------------------------------------------------"+'\nWHAT CATEGORY DO YOU WISH TO GUESS FROM?'+"\n-------------------------------------------------"+"\n\n",
+            message: '\n\n'+"   -------------------------------------------------"+'\n   BIG FIRST QUESTION . . .'+"\n   -------------------------------------------------"+"\n\n\n"+"   -------------------------------------------------"+'\n   WHAT CATEGORY DO YOU WISH TO GUESS FROM?'+"\n   -------------------------------------------------"+"\n\n",
             choices: ListArray,
 
         }
@@ -96,7 +96,7 @@ function StartNewGame(){
         }
         var KVN = answers.theme
         KVN=KVN.toUpperCase()
-        console.log("\n"+KVN+", AN INTERESTING CHOICE.\n\n")
+        console.log("\n   "+KVN+", AN INTERESTING CHOICE.\n\n")
           
         //word type (choose word array based on criteria)
         //define word to guess as random word from choosen array
@@ -120,14 +120,14 @@ function StartNewGame(){
 //02 - function display current word and guesses left
 function DisplayWord(WordToGuess,CurrentGuesses,WordToGuessArray )  {
     console.log("\n\n")
-    console.log("-------------------------------------------------")
+    console.log("   -------------------------------------------------")
     console.log("\n\n")
     //hangman
     drawMan(WordToGuess,CurrentGuesses);
     //you have x guess left
-    console.log("YOU HAVE ONLY "+WordToGuess.guesses+" GUESSES REMAINING.\n")
+    console.log("   YOU HAVE ONLY "+WordToGuess.guesses+" GUESSES REMAINING.\n")
     //currrent word is ______ 
-    console.log("HERE'S A HINT, THE CURRENT WORD IS: "+WordToGuess.WordDisplay()+"\n")
+    console.log("   HERE'S A HINT, THE CURRENT WORD IS: "+WordToGuess.WordDisplay()+"\n")
     //user has already guesses
     //console.log(CurrentGuesses)
     var CGuesses='';
@@ -135,7 +135,7 @@ function DisplayWord(WordToGuess,CurrentGuesses,WordToGuessArray )  {
     CGuesses=CGuesses.split("")
     CGuesses = CGuesses.sort()
     CGuesses = CGuesses.toString()
-    console.log("BUT I KNOW YOU'VE ALREADY GUESSED: "+CGuesses+"\n")
+    console.log("   BUT I KNOW YOU'VE ALREADY GUESSED: "+CGuesses+"\n")
     //run function to input guess
     UserGuessInput(WordToGuess,CurrentGuesses,WordToGuessArray)
 }
@@ -153,10 +153,10 @@ function UserGuessInput(WordToGuess,CurrentGuesses,WordToGuessArray){
                 //console.log("\n"+name)
                 //console.log(name.length)
                 if(!re.exec(name) || name.length!==1){
-                    return "Not a valid guess. Choose letters a to z."
+                    return "   Not a valid guess. Choose letters a to z."
                 }    //already guessed?
                 else if(CheckForGuess(name,CurrentGuesses)=== true){
-                    return "You already guessed "+name+", guess again."
+                    return "   You already guessed "+name+", guess again."
                 }
                 else{return true}
             }
@@ -208,24 +208,24 @@ function GameOver(WordToGuess,CurrentGuesses){
     console.log("\n")
     drawMan(WordToGuess,CurrentGuesses);
     console.log("\n")
-    console.log("-------------------------------------------------")
-    console.log("EMBRACE THE KVN")
-    console.log("-------------------------------------------------")
+    console.log("   -------------------------------------------------")
+    console.log("   EMBRACE THE KVN")
+    console.log("   -------------------------------------------------")
     console.log("\n")
-    console.log("-------------------------------------------------")
-    console.log("Game Over")
-    console.log("-------------------------------------------------")
+    console.log("   -------------------------------------------------")
+    console.log("   Game Over")
+    console.log("   -------------------------------------------------")
     StartNewGame()
 }
 function YouWin(){
     console.log("\n")
-    console.log("-------------------------------------------------")
-    console.log("KVN SAVES THE DAY")
-    console.log("-------------------------------------------------")
+    console.log("   -------------------------------------------------")
+    console.log("   KVN SAVES THE DAY")
+    console.log("   -------------------------------------------------")
     console.log("\n")
-    console.log("-------------------------------------------------")
-    console.log("You Win")
-    console.log("-------------------------------------------------")
+    console.log("   -------------------------------------------------")
+    console.log("   You Win")
+    console.log("   -------------------------------------------------")
     StartNewGame()
 }
 
@@ -294,6 +294,7 @@ function drawMan(WordToGuess,CurrentGuesses) {
 	 console.log( four );
 	 console.log( five );
      console.log( six );
+     console.log("\n")
      
 }
 
