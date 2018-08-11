@@ -1,5 +1,4 @@
--- write insert queries to populate the burgers table with at least three entries.
-
-INSERT INTO burger (burger_name, devoured) VALUES ("Cheeseburger", false)
-INSERT INTO burger (burger_name, devoured) VALUES ("Juicy Lucy", false)
-INSERT INTO burger (burger_name, devoured) VALUES ("Bison Burger", false)
+-- Insert a set of records.
+INSERT INTO burgers (burger_name, devoured) VALUES ('Juicy Lucy', false);
+INSERT INTO burgers (burger_name, devoured) VALUES ('CHeese Burger', false);
+INSERT INTO burgers (burger_name, devoured) VALUES ('Bison Burger', false);

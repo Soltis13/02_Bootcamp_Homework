@@ -1,25 +1,29 @@
-//Require the following npm packages inside of the server.js file:  express body-parser
-
-// DEPENDENCIES
+// Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
+var exphbs = require("express-handlebars");
+var routes = require("./controllers/burgers_controller");
 
-// EXPRESS CONFIGURATION
-// Tells node that we are creating an "express" server
+// Setup the Express App
 var app = express();
-
-// Sets an initial port. We"ll use this later in our listener
 var PORT = process.env.PORT || 8080;
 
-// Sets up the Express app to handle data parsing
+// Setup the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// ROUTER
-require("./app/routes/apiRoutes")(app);
-require("./app/routes/htmlRoutes")(app);
+// Setup Handlebars
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-// LISTENER
+// Setup access to static assets
+app.use(express.static('public'))
+
+// Setup Routes
+app.use(routes);
+
+// Start server to listen to client requests.
 app.listen(PORT, function() {
-  console.log("App listening on PORT: " + PORT);
+  // Log (server-side) when the server has started
+  console.log("Server listening on: http://localhost:" + PORT);
 });
