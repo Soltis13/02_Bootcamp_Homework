@@ -1,0 +1,43 @@
+/* Background */
+body{
+    background-color: rgba(145, 91, 91, 0.897);
+};
+
+/* Header / title  landing-header*/
+.landing-header{
+    padding-top:2em;
+}
+#sign-in{
+    float:right;
+    
+}
+
+#login .buttons{
+    margin-top:2em;
+}
+
+/* Front Page ID login-view*/
+#login{
+    padding: 5em 0;
+}
+/* Sign in Page class signin-user-view*/
+.sign-in-form{
+    border:2px solid black;
+    text-align: center;
+    padding: 2em;
+    background-color:rgb(214, 192, 196)
+}
+
+/* New Account Page class new-user-view*/
+.sign-in-form{
+    border:2px solid black;
+    text-align: center;
+    padding: 2em;
+    background-color:rgb(214, 192, 196)
+}
+
+/* Dashboard Page */
+
+/* Search Page */
+
+/* Movie Page */
