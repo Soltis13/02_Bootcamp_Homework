@@ -8,13 +8,12 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Clicky Game</h1>
-          <h1 className="App-title"
-            //onChange from inputChangedHandler
-            //change the value of score
-            //an h1 of the userinput state
-            //component to collect teh score and high score
-            //{output}
-          >You guessed</h1>
+
+          <input type="text" 
+          onChange={this.inputChangedHandler} 
+          value={this.userInput} />
+          <p>{this.state.userInput}</p>
+          <Guess input ={this.state.userInput.text}/>
 
           <input type="text" 
             //onChange from inputChangedHandler
@@ -37,7 +36,6 @@ class App extends Component {
           <p //link to bootcamp code
           />
         </footer>
-
       </div>
     );
   }
