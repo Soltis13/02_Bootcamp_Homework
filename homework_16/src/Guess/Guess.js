@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Guess = (props) => {
+const GuessMessage = (props) => {
     let GuessMessage = "You guessed incorrectly!!";
 
     if (props.input){
@@ -14,4 +14,4 @@ const Guess = (props) => {
     );
 };
 
-export default Guess;
+export default GuessMessage;
